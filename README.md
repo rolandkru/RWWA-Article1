@@ -1,4 +1,4 @@
-RWWA-Article1
+Real World Windows Azure - Article 1
 =============
 
 This is a sample application I wrote for the "Real World Windows Azure"-Series in the Windows Developer Magazine.
