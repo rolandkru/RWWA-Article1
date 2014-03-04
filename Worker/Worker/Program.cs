@@ -29,7 +29,7 @@ namespace Worker
         /// </param>
         private static void Main(string[] args)
         {
-            var credentials = new StorageCredentials("rwwaarticle1", "ruDQ5HD3f6nVoWAe56dWPNglfnt425XGUQJ+wczCIm19JBDdvCYtKuyiFTHr03anfNh+IZjoDVbG/whEtS2HuQ==");
+            var credentials = new StorageCredentials("[Enter your account name]", "[Enter your account key]");
 
             // Retrieve storage account from connection string.
             var storageAccount = new CloudStorageAccount(credentials, true);

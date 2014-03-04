@@ -33,7 +33,7 @@ namespace RWWA_Article1.Server
 
             var dto = new DataDto();
 
-            var credentials = new StorageCredentials("rwwaarticle1", "ruDQ5HD3f6nVoWAe56dWPNglfnt425XGUQJ+wczCIm19JBDdvCYtKuyiFTHr03anfNh+IZjoDVbG/whEtS2HuQ==");
+            var credentials = new StorageCredentials("[Enter your account name]", "[Enter your account key]");
 
             // Retrieve storage account from connection string.
             var storageAccount = new CloudStorageAccount(credentials, true);
@@ -58,14 +58,15 @@ namespace RWWA_Article1.Server
             // It's better to make sure the container always exists from the beginning.
             container.CreateIfNotExists();
 
-            // Set the expiry time and permissions for the container. In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container. 
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             var accessBlobPolicy = new SharedAccessBlobPolicy();
             accessBlobPolicy.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(1);
             accessBlobPolicy.Permissions = SharedAccessBlobPermissions.Write;
 
             // Generate the SAS token. No access policy identifier is used which makes it non revocable.
             // The token is generated without issuing any calls against the Windows Azure Storage.
-            string sasToken = container.GetSharedAccessSignature(accessBlobPolicy, null);
+            string sasToken = container.GetSharedAccessSignature(accessBlobPolicy);
 
             dto.BlobContainerUrl = container.Uri;
             dto.BlobSasToken = sasToken;
