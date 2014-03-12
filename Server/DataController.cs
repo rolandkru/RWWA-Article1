@@ -10,7 +10,6 @@
 namespace RWWA_Article1.Server
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
     using System.Web.Http;
 
     using Common;
@@ -23,10 +22,14 @@ namespace RWWA_Article1.Server
     /// <summary>
     /// The values controller.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Reviewed. Suppression is OK here.")]
     public class DataController : ApiController
     {
-        // GET api/values        
+        /// <summary>
+        /// Get BLOB and Queue SAS URL.
+        /// </summary>
+        /// <returns>
+        /// A data transfer object with the two URLs.
+        /// </returns>
         public DataDto Get()
         {
             Console.WriteLine("Received a request from a client.");
@@ -45,6 +48,11 @@ namespace RWWA_Article1.Server
             return dto;
         }
 
+        /// <summary>
+        /// Generates the blob container SAS URL.
+        /// </summary>
+        /// <param name="storageAccount">The storage account.</param>
+        /// <param name="dto">The data transfer object.</param>
         private static void GenerateBlobContainerSasUrl(CloudStorageAccount storageAccount, DataDto dto)
         {
             // Create the blob client.
@@ -54,7 +62,7 @@ namespace RWWA_Article1.Server
             var container = blobClient.GetContainerReference("datacontainer");
 
             // Create the container if it doesn't already exist.
-            // TODO: Avoid the next line of code in productive systems, since it makes call to azure blob storage. 
+            // TODO: Avoid the next line of code in productive systems, since it makes a call to azure blob storage. 
             // It's better to make sure the container always exists from the beginning.
             container.CreateIfNotExists();
 
@@ -72,6 +80,11 @@ namespace RWWA_Article1.Server
             dto.BlobSasToken = sasToken;
         }
 
+        /// <summary>
+        /// Generates the queue SAS URL.
+        /// </summary>
+        /// <param name="storageAccount">The storage account.</param>
+        /// <param name="dto">The data transfer object.</param>
         private static void GenerateQueueSasUrl(CloudStorageAccount storageAccount, DataDto dto)
         {
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();

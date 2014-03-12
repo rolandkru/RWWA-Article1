@@ -22,10 +22,10 @@ namespace Worker
     internal class Program
     {
         /// <summary>
-        /// The main.
+        /// The main entry point.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        /// The command line arguments. Not used.
         /// </param>
         private static void Main(string[] args)
         {
@@ -51,14 +51,14 @@ namespace Worker
                         Console.WriteLine("Received Message for BLOB " + message.AsString);
                         var blobUrl = message.AsString;
                         var blockBlob = new CloudBlockBlob(new Uri(blobUrl), credentials);
-
-                        // TODO: download and process BLOB 
-                        /*using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
-                        {
-                            blockBlob.DownloadToStream(fileStream);
-                        }*/
                         if (blockBlob.Exists())
                         {
+                            // TODO: download and process BLOB 
+                            /*using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
+                            {
+                                blockBlob.DownloadToStream(fileStream);
+                            }*/
+                       
                             blockBlob.Delete();
                         }
 

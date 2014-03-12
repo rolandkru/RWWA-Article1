@@ -11,7 +11,7 @@ namespace Common
     using System;
 
     /// <summary>
-    ///     The data DTO.
+    ///     The SAS URL data transfer object.
     /// </summary>
     public class DataDto
     {

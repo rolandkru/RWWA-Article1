@@ -19,7 +19,7 @@ namespace RWWA_Article1.Server
     public class Startup
     {
         /// <summary>
-        /// This code configures Web API contained in the class Startup, which is additionally specified as the type parameter in WebApplication.
+        /// This code configures Web API.
         /// </summary>
         /// <param name="appBuilder">
         /// The app builder.

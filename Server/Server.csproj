@@ -146,7 +146,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common\Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{3F3B8C2D-A73D-4690-A3CD-D87AB8C2A65B}</Project>
       <Name>Common</Name>
     </ProjectReference>

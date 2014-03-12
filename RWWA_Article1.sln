@@ -10,11 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7152BB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{C6798F81-0E2C-40D2-9571-C0AEDAB9AFD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client\Client.csproj", "{9538A1CD-9624-430A-94D6-C3A3ED2C5CA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{9538A1CD-9624-430A-94D6-C3A3ED2C5CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common\Common.csproj", "{3F3B8C2D-A73D-4690-A3CD-D87AB8C2A65B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{3F3B8C2D-A73D-4690-A3CD-D87AB8C2A65B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker\Worker.csproj", "{1F59B87E-E222-4DD8-9A36-6AA981CC7413}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{1F59B87E-E222-4DD8-9A36-6AA981CC7413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

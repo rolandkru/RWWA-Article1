@@ -23,21 +23,23 @@ namespace Client
     internal class Program
     {
         /// <summary>
-        /// The main.
+        /// The main entry point.
         /// </summary>
         /// <param name="args">
-        /// The args.
+        /// The command line arguments. Not used.
         /// </param>
         private static void Main(string[] args)
         {
             Console.WriteLine("Hello!");
 
+            // Create a connection to the web api server
             string command;
             var client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:10281/");
 
             do
             {
+                // Load the file to transmit
                 string fileName = string.Empty;
                 while (string.IsNullOrEmpty(fileName) || !File.Exists(fileName))
                 {
@@ -47,6 +49,7 @@ namespace Client
 
                 var fileInfo = new FileInfo(fileName);
 
+                // Get the SAS-URLs from the server
                 Console.WriteLine("Asking Server for SAS-URLs");
                 HttpResponseMessage resp = client.GetAsync("api/Data").Result;
                 resp.EnsureSuccessStatusCode();
@@ -58,6 +61,7 @@ namespace Client
                 Console.WriteLine("Queue URL: " + dataDto.QueueUrl);
                 Console.WriteLine("Queue SAS Token: " + dataDto.QueueSasToken);
 
+                // Load file to BLOB Storage
                 Console.WriteLine("Create or overwrite the blob with contents from a local file...");
                 var container = new CloudBlobContainer(new Uri(dataDto.BlobContainerUrl + dataDto.BlobSasToken));
                 CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileInfo.Name);
@@ -68,6 +72,7 @@ namespace Client
 
                 Console.WriteLine("done.");
 
+                // Add message to queue
                 Console.Write("Add a new message to the queue...");
                 var queue = new CloudQueue(new Uri(dataDto.QueueUrl + dataDto.QueueSasToken));
                 var message = new CloudQueueMessage(blockBlob.Uri.ToString());
